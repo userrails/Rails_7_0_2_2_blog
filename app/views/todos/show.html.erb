@@ -1,0 +1,11 @@
+<h2>ToDo Name: </h2>
+<hr/>
+<p><%= @todo.title.capitalize %></p>
+<br/>
+
+<h3>Tasks</h3>
+<ul>
+    <% @todo.tasks.each do |task| %>
+        <li><%= task.description %></li>
+    <% end %>
+</ul>

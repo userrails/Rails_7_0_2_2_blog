@@ -1,0 +1,29 @@
+<%= form_with model: @todo do |f| %>
+  <h2>Todos</h2> 
+  <div class="field">  
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <h2>Tasks</h2>
+  <div data-controller="nested-form">
+    <template data-nested-form-target="template">
+      <%= f.fields_for :tasks, Task.new, child_index: 'TEMPLATE_RECORD' do |task| %>
+        <%= render "task_fields", f: task %>
+      <% end %>
+    </template>
+
+    <%= f.fields_for :tasks do |task| %>
+      <%= render "task_fields", f: task %>
+    <% end %>
+
+    <!-- Inserted elements will be injected before that target. -->
+    <div data-target="nested-form.add_item">
+      <%= link_to "Add Task", "#", data: { action: "nested-form#add_association" } %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Save Todo' %>
+  </div>
+<% end %>
