@@ -1,0 +1,10 @@
+
+<h4>Copy PIN:</h4>
+
+<!--setup controller-->
+<div data-controller="clipboard">
+  <!--setup target-->
+  <input data-clipboard-target="source" type="text" value="12345" readonly></input>
+  <!--connecting the action copy()--> 
+  <a href="#" data-action="clipboard#copy">Copy to Clipboard</a>
+</div>

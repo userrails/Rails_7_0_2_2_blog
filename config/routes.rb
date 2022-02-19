@@ -16,4 +16,10 @@ Rails.application.routes.draw do
   resources :articles do
     resources :comments
   end
+
+  resources :pages, only: [:copy_pin] do
+    collection do
+      get :copy_pin
+    end
+  end
 end
