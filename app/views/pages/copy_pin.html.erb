@@ -1,10 +1,16 @@
-
 <h4>Copy PIN:</h4>
 
 <!--setup controller-->
-<div data-controller="clipboard">
+<!--
+  1. Clipboard API works on current browsers and does not work on older browsers and it does not work when browser JS deactivated.
+  2. Hide Copy button in CSS. In Stimulus controller, if Clipboard API supported show button else hide button.
+    `data-clipboard-supported-class="clipboard--supported"` add on the div element that has the `data-controller` attribute.
+  3. Add `class="clipboard-button"` to the button element.
+  4. Add some css to hide or show button
+-->
+<div data-controller="clipboard" data-clipboard-supported-class="clipboard--supported">
   <!--setup target-->
   <input data-clipboard-target="source" type="text" value="12345" readonly></input>
   <!--connecting the action copy()--> 
-  <a href="#" data-action="clipboard#copy">Copy to Clipboard</a>
+  <a href="#" data-action="clipboard#copy" class="clipboard-button">Copy to Clipboard</a>
 </div>
