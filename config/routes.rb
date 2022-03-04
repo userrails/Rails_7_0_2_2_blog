@@ -17,9 +17,10 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  resources :pages, only: [:copy_pin] do
+  resources :pages, except: %i[index show new create edit update destroy] do
     collection do
       get :copy_pin
+      get :slideshow
     end
   end
 end
