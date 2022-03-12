@@ -21,6 +21,9 @@ Rails.application.routes.draw do
     collection do
       get :copy_pin
       get :slideshow
+      get :content_loader
+      get :messages
+      get :comments
     end
   end
 end
