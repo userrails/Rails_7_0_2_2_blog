@@ -19,7 +19,19 @@
     <% end %>
 
     <% if user_signed_in? %>
-      <%= button_to("Log Out", destroy_user_session_path, method: :delete) %>
+      <% unless params[:controller] == "pages" && %w[messages comments].include?(params[:action]) %>
+        <div style="display: inline-flex;"><%= current_user.email %> |  <%= button_to("Log Out", destroy_user_session_path, method: :delete) %></div>
+
+        <%= link_to "ToDo", todos_path %>
+
+        <%= link_to "Articles", articles_path %>
+
+        <%= link_to "SlideShow", "/pages/slideshow"  %>
+        <%= link_to "CopyPin", "/pages/copy_pin" %>
+        <%= link_to "ContentLoader", "/pages/content_loader" %>
+      <% end %>
+    <% else %>
+      <%= link_to "Sigin", user_session_path %>
     <% end %>
 
     <%= yield %>
